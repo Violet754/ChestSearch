@@ -1,8 +1,8 @@
 [
 {
-  "modid": "",
-  "name": "",
-  "description": "",
+  "modid": "ChestSearch",
+  "name": "ChestSearch",
+  "description": "Search though chest's with goggles!",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
