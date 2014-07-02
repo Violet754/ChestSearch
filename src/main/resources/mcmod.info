@@ -3,7 +3,7 @@
   "modid": "ChestSearch",
   "name": "ChestSearch",
   "description": "Search though chest's with goggles!",
-  "version": "${version}",
+  "version": "",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
