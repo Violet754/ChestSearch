@@ -1,0 +1,16 @@
+[
+{
+  "modid": "",
+  "name": "",
+  "description": "",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Coldrock7","Adamt__0123"],
+  "credits": "Coldrock7",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
