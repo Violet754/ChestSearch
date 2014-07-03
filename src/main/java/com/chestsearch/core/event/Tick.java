@@ -4,18 +4,20 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayerMP;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.common.gameevent.TickEvent.Phase;
 
 public class Tick {
+	
 	@SubscribeEvent
-	public void onTick(TickEvent.PlayerTickEvent event){
-		
-		if(event.player instanceof EntityPlayerMP){
-			if(event.player.isSneaking()){
-				event.player.setFire(10);
-				
-			}
+	public void onTick(TickEvent.RenderTickEvent event){
+		if(event.phase == Phase.START){
+			System.out.println("IT WORKS");
 			
-		}
-	}
 
-}
+	  }else{
+		 
+	  }
+			
+	}
+  }
+

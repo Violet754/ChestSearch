@@ -42,7 +42,7 @@ public class ChestSearch {
 
         public void load(FMLInitializationEvent event) {
                 proxy.registerRenderers();
-                FMLCommonHandler.instance().bus().register(new Tick());
+          
         }
         
 
