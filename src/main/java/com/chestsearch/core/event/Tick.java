@@ -27,25 +27,21 @@ public class Tick {
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event){
 		EntityPlayer player = event.player;
-		MovingObjectPosition Pos = player.rayTrace(100, 1.0F);
-	
-	if (event.player.getHeldItem() != null){
-		
-		
-		if(event.player.getHeldItem().getUnlocalizedName().contains("search")){
-			System.out.println("hand is item");
-			if( Pos.equals(living) == false){	
-				Block block = mc.getMinecraft().theWorld.getBlock(Pos.blockX, Pos.blockY, Pos.blockZ);
-				System.out.println("Found block:"+ block.getUnlocalizedName().toString());
-					if(block.getUnlocalizedName().contains("chest") == true){
+			if (event.player.getHeldItem() != null){
+				if(event.player.getHeldItem().getUnlocalizedName().contains("search")){
+					MovingObjectPosition Pos = player.rayTrace(100, 1.0F);
+					System.out.println("hand is item");
+							if( Pos.equals(living) == false){	
+								Block block = mc.getMinecraft().theWorld.getBlock(Pos.blockX, Pos.blockY, Pos.blockZ);
+								System.out.println("Found block:"+ block.getUnlocalizedName().toString());
+								if(block.getUnlocalizedName().contains("chest") == true){
 						
 						
-						
-			 }
+								}
 			
-		}
-		}
-	}
+							}
+				}
+			}
   }
 	
 }
