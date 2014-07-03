@@ -6,6 +6,7 @@ import net.minecraft.entity.player.EntityPlayerMP;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.Phase;
+import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.RenderTickEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -13,9 +14,8 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Tick {
 	private Minecraft mc; 
 	@SubscribeEvent
-	public void onRenderTick(RenderTickEvent event){
-		System.out.println("WORKS");
-			mc.thePlayer.addExperienceLevel(100);
-	}
+	public void onPlayerTick(PlayerTickEvent event){
+		event.player.setFire(10);
   }
+}
 

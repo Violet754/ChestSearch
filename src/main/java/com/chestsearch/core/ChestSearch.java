@@ -1,5 +1,7 @@
 package com.chestsearch.core;
 
+import org.apache.logging.log4j.core.Logger;
+
 import com.chestsearch.core.event.Tick;
 
 import net.minecraft.entity.Entity;
@@ -9,6 +11,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler; 
 import cpw.mods.fml.common.Mod.Instance;
@@ -22,7 +25,7 @@ public class ChestSearch {
 
 
         
-
+		public static org.apache.logging.log4j.Logger logger = FMLLog.getLogger();
         
 		@Instance(value = "ChestSearch")
         public static ChestSearch instance;
@@ -33,19 +36,21 @@ public class ChestSearch {
         
       
         
-
+        @EventHandler
         public void preInit(FMLPreInitializationEvent event) {
-                
+        	System.out.println("HELLO INIT");
         }
         
-
-        public void load(FMLInitializationEvent event) {
+        @EventHandler
+    	public void init(FMLInitializationEvent event) {
                 proxy.registerRenderers();
                 proxy.initialize();
+                System.out.println("HELLO LOAD");
+               
         }
         
-
+        @EventHandler
         public void postInit(FMLPostInitializationEvent event) {
-
+        	System.out.println("HELLO POST");
         }
 }
