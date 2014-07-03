@@ -1,7 +1,5 @@
 package com.chestsearch.core;
 
-import com.chestsearch.core.event.Tick;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -36,7 +34,7 @@ public class ChestSearch {
         
 
         public void preInit(FMLPreInitializationEvent event) {
-                
+        	
         }
         
 
