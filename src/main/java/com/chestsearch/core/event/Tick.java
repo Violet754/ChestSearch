@@ -27,18 +27,25 @@ public class Tick {
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event){
 		EntityPlayer player = event.player;
-		System.out.println(player.getHeldItem());
-		System.out.println(new ItemStack(ChestSearch.itemsearchdevice, 1));
-		if (player.getHeldItem().getUnlocalizedName().contains("itemsearchdevice")){
 		MovingObjectPosition Pos = player.rayTrace(100, 1.0F);
-		if( Pos.equals(living) == false){	
-			 Block block = mc.getMinecraft().theWorld.getBlock(Pos.blockX, Pos.blockY, Pos.blockZ);
-			 if(block.getUnlocalizedName().contains("chest") == true){
-				 block.setLightLevel(17);
+	
+	if (event.player.getHeldItem() != null){
+		
+		
+		if(event.player.getHeldItem().getUnlocalizedName().contains("search")){
+			System.out.println("hand is item");
+			if( Pos.equals(living) == false){	
+				Block block = mc.getMinecraft().theWorld.getBlock(Pos.blockX, Pos.blockY, Pos.blockZ);
+				System.out.println("Found block:"+ block.getUnlocalizedName().toString());
+					if(block.getUnlocalizedName().contains("chest") == true){
+						
+						
+						
 			 }
 			
 		}
 		}
+	}
   }
 	
 }
