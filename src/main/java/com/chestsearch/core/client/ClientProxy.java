@@ -15,7 +15,7 @@ public class ClientProxy extends CommonProxy {
         @Override
         public void initialize() {
         	FMLCommonHandler.instance().bus().register(new Tick());
-        	System.out.println("HELLO WORLD");
+        	
         	
         }
 }

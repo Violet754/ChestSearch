@@ -38,19 +38,18 @@ public class ChestSearch {
         
         @EventHandler
         public void preInit(FMLPreInitializationEvent event) {
-        	System.out.println("HELLO INIT");
+
         }
         
         @EventHandler
     	public void init(FMLInitializationEvent event) {
                 proxy.registerRenderers();
                 proxy.initialize();
-                System.out.println("HELLO LOAD");
                
         }
         
         @EventHandler
         public void postInit(FMLPostInitializationEvent event) {
-        	System.out.println("HELLO POST");
+
         }
 }
