@@ -15,7 +15,7 @@ public class Tick {
 	private Minecraft mc; 
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event){
-		event.player.setFire(10);
+		
   }
 }
 
