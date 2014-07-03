@@ -31,7 +31,6 @@ public class ChestSearch {
         @SidedProxy(clientSide="com.chestsearch.core.client.ClientProxy", serverSide="com.chestsearch.core.CommonProxy")
         public static CommonProxy proxy;
         
-        
       
         
 
@@ -42,7 +41,7 @@ public class ChestSearch {
 
         public void load(FMLInitializationEvent event) {
                 proxy.registerRenderers();
-          
+                proxy.initialize();
         }
         
 

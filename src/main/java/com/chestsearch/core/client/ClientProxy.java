@@ -10,7 +10,12 @@ public class ClientProxy extends CommonProxy {
         
         @Override
         public void registerRenderers() {
-                FMLCommonHandler.instance().bus().register(new Tick());
+              
         }
-        
+        @Override
+        public void initialize() {
+        	FMLCommonHandler.instance().bus().register(new Tick());
+        	
+        	
+        }
 }
