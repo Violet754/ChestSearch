@@ -1,9 +1,29 @@
 package com.chestsearch.core;
 
-import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+
+
 
 public class InventoryHelper {
-	public boolean containsItem(TileEntityChest tile, boolean b){
-		return true;
+	private static int slot;
+	public static boolean containsItem(IInventory Inv, String lookingfor){
+		
+		while(slot <= Inv.getSizeInventory()){
+			if(Inv.getStackInSlot(slot) != null){
+				if(Inv.getStackInSlot(slot).getUnlocalizedName().toString().contains(lookingfor)){
+					System.out.println("Item match");
+					return true;
+				}
+			}
+			slot++;
+			if(slot >= Inv.getSizeInventory()){
+				slot = 0;
+				return false;
+			}
+		}
+		return false;
+		
 	}
+	
 }
