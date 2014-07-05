@@ -3,6 +3,8 @@ package com.chestsearch.core;
 import org.apache.logging.log4j.Logger;
 
 import net.minecraft.item.Item;
+import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.common.config.Property;
 
 import com.chestsearch.core.item.ItemSearchDevice;
 
@@ -32,6 +34,7 @@ public class ChestSearch {
         public static final String Ver = "0";
         public static final String PatchVer = "0";
         public static final String TestVer = "1";
+        public static final String VersionPub = Ver+ "."+PatchVer+"."+TestVer;
  
         //Create Items
         public static Item itemsearchdevice;
@@ -43,11 +46,22 @@ public class ChestSearch {
         
         @EventHandler
         public void preInit(FMLPreInitializationEvent event) {
-        		//Temporary log message until i can come up with a better one
         		logger.info("Chest Search: Starting Init Search!");
         		itemsearchdevice = new ItemSearchDevice().setTextureName(ChestSearch.modid + ":searchdevice");
-        	
+        		
+        		Configuration config = new Configuration(event.getSuggestedConfigurationFile());
+        		config.load();
+        		
+        		Property searchhelm = config.get(config.CATEGORY_GENERAL, "Search Helm enabled:", true);
+        		Property searchdevice = config.get(config.CATEGORY_GENERAL, "Handheld Search Enabled:", true);
+        		
+        		config.save();
+        		if(searchdevice.getBoolean(true)){
         		GameRegistry.registerItem(itemsearchdevice, "itemsearchdevice");
+        		}else{
+        			logger.warn("Chest Search:Handheld Search Device Disabled!");
+        		}
+        		
         }
         
         @EventHandler
