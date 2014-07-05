@@ -1,21 +1,12 @@
 package com.chestsearch.core;
 
-import org.apache.logging.log4j.core.Logger;
+import net.minecraft.item.Item;
 
-import com.chestsearch.core.event.Tick;
 import com.chestsearch.core.item.ItemSearchDevice;
 
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
-import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler; 
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -23,24 +14,35 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 
-@Mod(modid=ChestSearch.modid, name="Chest Search", version="0.0.1")
+@Mod(modid=ChestSearch.modid, name=ChestSearch.PubName, version=ChestSearch.Ver + "."+ ChestSearch.PatchVer + "." + ChestSearch.TestVer)
 public class ChestSearch {
 
-
-	    public static Item itemsearchdevice;
+		
+	    //Set logger
 		public static org.apache.logging.log4j.Logger logger = FMLLog.getLogger();
-        
+		
 		@Instance(value = "ChestSearch")
         public static ChestSearch instance;
+		
+		//Set Name and Version Strings
+		public static final String PubName = "Chest Search";
         public static final String modid="chestsearch";
+        public static final String Ver = "0";
+        public static final String PatchVer = "0";
+        public static final String TestVer = "1";
  
+        //Create Items
+        public static Item itemsearchdevice;
+        
+        //Proxy Stuff
         @SidedProxy(clientSide="com.chestsearch.core.client.ClientProxy", serverSide="com.chestsearch.core.CommonProxy")
         public static CommonProxy proxy;
         
-      
         
         @EventHandler
         public void preInit(FMLPreInitializationEvent event) {
+        		//Temporary log message until i can come up with a better one
+        		logger.info("Chest Search: Starting Init Search!");
         		itemsearchdevice = new ItemSearchDevice().setTextureName(ChestSearch.modid + ":searchdevice");
         	
         		GameRegistry.registerItem(itemsearchdevice, "itemsearchdevice");
@@ -48,6 +50,7 @@ public class ChestSearch {
         
         @EventHandler
     	public void init(FMLInitializationEvent event) {
+        		logger.info("Chest Search: Almost Done!");
                 proxy.registerRenderers();
                 proxy.initialize();
                
@@ -55,6 +58,7 @@ public class ChestSearch {
         
         @EventHandler
         public void postInit(FMLPostInitializationEvent event) {
+        	logger.info("Chest Search: Init Complete. Have a nice day!");
 
         }
 }

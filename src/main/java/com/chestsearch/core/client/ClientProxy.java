@@ -14,6 +14,7 @@ public class ClientProxy extends CommonProxy {
         }
         @Override
         public void initialize() {
+        	//set tick handler for finding items
         	FMLCommonHandler.instance().bus().register(new Tick());
         	
         	

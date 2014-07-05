@@ -1,6 +1,5 @@
 package com.chestsearch.core.inventory;
 
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntityChest;
 
@@ -8,6 +7,7 @@ import net.minecraft.tileentity.TileEntityChest;
 
 public class InventoryHelper {
 	private static int slot;
+	//use when searching for a item in a inventory [WIP]
 	public static boolean containsItem(TileEntityChest Inv, String lookingfor){
 		
 		while(slot <= Inv.getSizeInventory()){

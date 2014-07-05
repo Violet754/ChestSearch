@@ -8,7 +8,7 @@ public class CommonProxy {
         }
 
 		public void initialize() {
-			
+			//used in client proxy
 			
 		}
 

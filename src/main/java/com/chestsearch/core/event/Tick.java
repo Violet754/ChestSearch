@@ -29,8 +29,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class Tick {
 	private Minecraft mc; 
+	//Search variable -note replace with search gui variable when gui is made
 	private String search = "bed";
 	private TileEntityChest invent;
+	
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event){
 		EntityPlayer player = event.player;
@@ -42,13 +44,14 @@ public class Tick {
 					
 				
 					if(ent != null){
-						
+						//debug remove soon
 						Block bl = mc.getMinecraft().theWorld.getBlock(Pos.blockX, Pos.blockY, Pos.blockZ);
 						System.out.println("block = " + bl.getUnlocalizedName().toString());
 						
-							invent = ent;
-							
+						
+						invent = ent;
 								if(InventoryHelper.containsItem(invent, search)){
+									//Debug remove when working
 									event.player.setFire(1);
 									System.out.println("Player set on fire for searching item:" + search);
 						}
