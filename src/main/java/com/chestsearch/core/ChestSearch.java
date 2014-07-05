@@ -1,5 +1,7 @@
 package com.chestsearch.core;
 
+import org.apache.logging.log4j.Logger;
+
 import net.minecraft.item.Item;
 
 import com.chestsearch.core.item.ItemSearchDevice;
@@ -19,7 +21,7 @@ public class ChestSearch {
 
 		
 	    //Set logger
-		public static org.apache.logging.log4j.Logger logger = FMLLog.getLogger();
+		public static Logger logger = FMLLog.getLogger();
 		
 		@Instance(value = "ChestSearch")
         public static ChestSearch instance;
