@@ -1,7 +1,13 @@
 package com.chestsearch.core.inventory;
 
+import java.util.List;
+
+import net.minecraft.client.Minecraft;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.AxisAlignedBB;
 
 
 
@@ -27,6 +33,27 @@ public class InventoryHelper {
 			}
 		}
 		return false;
+		
+	}
+	
+	public static TileEntityChest GetChestsNearPlayer(){
+		TileEntityChest found;
+		
+		List list = Minecraft.getMinecraft().theWorld.getEntitiesWithinAABB(TileEntityChest.class, AxisAlignedBB.getBoundingBox(Minecraft.getMinecraft().thePlayer.posX - 20, Minecraft.getMinecraft().thePlayer.posY - 20, Minecraft.getMinecraft().thePlayer.posZ - 20, Minecraft.getMinecraft().thePlayer.posX + 20, Minecraft.getMinecraft().thePlayer.posY + 20, Minecraft.getMinecraft().thePlayer.posZ + 20));
+		for(int i = 0; i< list.size(); ++i){
+			if(list.get(i) == TileEntityChest.INFINITE_EXTENT_AABB){
+			TileEntity x = (TileEntity) list.get(i);
+			if(x != null){
+				System.out.println("FOUND SOMETHING");
+				found = (TileEntityChest) x;
+				return found;
+			}}
+			
+		}
+		
+		
+		
+		return null;
 		
 	}
 	

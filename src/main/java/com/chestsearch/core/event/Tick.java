@@ -1,5 +1,7 @@
 package com.chestsearch.core.event;
 
+import java.util.List;
+
 import com.chestsearch.core.ChestSearch;
 import com.chestsearch.core.inventory.InventoryHelper;
 import com.chestsearch.core.item.ItemSearchDevice;
@@ -14,6 +16,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -38,18 +41,11 @@ public class Tick {
 		EntityPlayer player = event.player;
 			if (player.getHeldItem() != null){
 				if(player.getHeldItem().getUnlocalizedName().contains("search")){
-					MovingObjectPosition Pos = player.rayTrace(10, 1.0F);
-
-					TileEntityChest ent = (TileEntityChest) mc.getMinecraft().theWorld.getTileEntity(Pos.blockX, Pos.blockY, Pos.blockZ);
+					TileEntity ent = InventoryHelper.GetChestsNearPlayer();
 					
 				
 					if(ent != null){
-						//debug remove soon
-						Block bl = mc.getMinecraft().theWorld.getBlock(Pos.blockX, Pos.blockY, Pos.blockZ);
-						System.out.println("block = " + bl.getUnlocalizedName().toString());
-						
-						
-						invent = ent;
+						invent = (TileEntityChest) ent;
 								if(InventoryHelper.containsItem(invent, search)){
 									//Debug remove when working
 									event.player.setFire(1);
