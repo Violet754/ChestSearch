@@ -1,4 +1,4 @@
-package com.chestsearch.core;
+package com.chestsearch.core.inventory;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -11,8 +11,9 @@ public class InventoryHelper {
 	public static boolean containsItem(TileEntityChest Inv, String lookingfor){
 		
 		while(slot <= Inv.getSizeInventory()){
-			
+
 			if(Inv.getStackInSlot(slot) != null){
+				System.out.println("Slot:"+ Inv.getStackInSlot(slot).getUnlocalizedName().toString());
 					System.out.println("WE FOUND A ITEM");
 				if(Inv.getStackInSlot(slot).getUnlocalizedName().toString().contains(lookingfor)){
 					System.out.println("Item match");

@@ -1,7 +1,7 @@
 package com.chestsearch.core.event;
 
 import com.chestsearch.core.ChestSearch;
-import com.chestsearch.core.InventoryHelper;
+import com.chestsearch.core.inventory.InventoryHelper;
 import com.chestsearch.core.item.ItemSearchDevice;
 
 import net.minecraft.block.Block;
@@ -29,7 +29,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class Tick {
 	private Minecraft mc; 
-	private String search = "red";
+	private String search = "bed";
 	private TileEntityChest invent;
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event){
@@ -39,16 +39,20 @@ public class Tick {
 					MovingObjectPosition Pos = player.rayTrace(10, 1.0F);
 
 					TileEntityChest ent = (TileEntityChest) mc.getMinecraft().theWorld.getTileEntity(Pos.blockX, Pos.blockY, Pos.blockZ);
-					Block bl = mc.getMinecraft().theWorld.getBlock(Pos.blockX, Pos.blockY, Pos.blockZ);
+					
 				
 					if(ent != null){
-						if(bl.getUnlocalizedName() == Blocks.chest.getUnlocalizedName()){
-						invent = ent;
-						if(InventoryHelper.containsItem(invent, search)){
-						event.player.setFire(1);
-						System.out.println("PLAYER SET FIRE");
+						
+						Block bl = mc.getMinecraft().theWorld.getBlock(Pos.blockX, Pos.blockY, Pos.blockZ);
+						System.out.println("block = " + bl.getUnlocalizedName().toString());
+						
+							invent = ent;
+							
+								if(InventoryHelper.containsItem(invent, search)){
+									event.player.setFire(1);
+									System.out.println("Player set on fire for searching item:" + search);
 						}
-						}
+						
 					
 				}	
 			}
