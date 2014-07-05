@@ -6,8 +6,10 @@ import com.chestsearch.core.item.ItemSearchDevice;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -27,27 +29,30 @@ import cpw.mods.fml.relauncher.SideOnly;
 @SideOnly(Side.CLIENT)
 public class Tick {
 	private Minecraft mc; 
-	private EntityLivingBase living;
 	private String search = "red";
-	private IInventory invblock = null;
+	private IInventory invent;
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event){
 		EntityPlayer player = event.player;
-			if (event.player.getHeldItem() != null){
-				if(event.player.getHeldItem().getUnlocalizedName().contains("search")){
+			if (player.getHeldItem() != null){
+				if(player.getHeldItem().getUnlocalizedName().contains("search")){
 					MovingObjectPosition Pos = player.rayTrace(10, 1.0F);
-					
+
 					TileEntity ent = mc.getMinecraft().theWorld.getTileEntity(Pos.blockX, Pos.blockY, Pos.blockZ);
-					
-					if(ent instanceof IInventory){
-						invblock = (IInventory) ent;
-						if(InventoryHelper.containsItem(invblock, search)){
+	
+					if(ent != null){
+						
+						
+				
+						if(InventoryHelper.containsItem(invent, search)){
 						event.player.setFire(1);
 						System.out.println("PLAYER SET FIRE");
 						}
+						
 					
 				}	
 			}
+			
 		}
   }
 	

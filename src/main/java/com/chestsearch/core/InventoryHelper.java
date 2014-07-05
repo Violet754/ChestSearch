@@ -10,7 +10,9 @@ public class InventoryHelper {
 	public static boolean containsItem(IInventory Inv, String lookingfor){
 		
 		while(slot <= Inv.getSizeInventory()){
+			
 			if(Inv.getStackInSlot(slot) != null){
+					System.out.println("WE FOUND A ITEM");
 				if(Inv.getStackInSlot(slot).getUnlocalizedName().toString().contains(lookingfor)){
 					System.out.println("Item match");
 					return true;
