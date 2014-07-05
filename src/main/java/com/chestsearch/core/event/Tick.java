@@ -30,7 +30,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 public class Tick {
 	private Minecraft mc; 
 	private String search = "red";
-	private IInventory invent;
+	private TileEntityChest invent;
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event){
 		EntityPlayer player = event.player;
@@ -38,21 +38,21 @@ public class Tick {
 				if(player.getHeldItem().getUnlocalizedName().contains("search")){
 					MovingObjectPosition Pos = player.rayTrace(10, 1.0F);
 
-					TileEntity ent = mc.getMinecraft().theWorld.getTileEntity(Pos.blockX, Pos.blockY, Pos.blockZ);
-	
-					if(ent != null){
-						
-						
+					TileEntityChest ent = (TileEntityChest) mc.getMinecraft().theWorld.getTileEntity(Pos.blockX, Pos.blockY, Pos.blockZ);
+					Block bl = mc.getMinecraft().theWorld.getBlock(Pos.blockX, Pos.blockY, Pos.blockZ);
 				
+					if(ent != null){
+						if(bl.getUnlocalizedName() == Blocks.chest.getUnlocalizedName()){
+						invent = ent;
 						if(InventoryHelper.containsItem(invent, search)){
 						event.player.setFire(1);
 						System.out.println("PLAYER SET FIRE");
 						}
-						
+						}
 					
 				}	
 			}
-			
+				
 		}
   }
 	

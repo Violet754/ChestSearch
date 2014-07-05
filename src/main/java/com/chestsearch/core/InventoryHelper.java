@@ -2,12 +2,13 @@ package com.chestsearch.core;
 
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntityChest;
 
 
 
 public class InventoryHelper {
 	private static int slot;
-	public static boolean containsItem(IInventory Inv, String lookingfor){
+	public static boolean containsItem(TileEntityChest Inv, String lookingfor){
 		
 		while(slot <= Inv.getSizeInventory()){
 			
